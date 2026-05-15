@@ -1,33 +1,82 @@
-# MBA Data Science - USP ESALQ 🚀
-## Módulo: Fundamentos de Estatística Aplicada à Saúde
+# 📊 Estatística Descritiva Aplicada à Saúde
+## MBA Data Science - USP ESALQ
 
-Este diretório documenta minha jornada no aprendizado de **Estatística Descritiva**, focando na aplicação de conceitos matemáticos para resolver problemas reais nos setores de Enfermagem e Vigilância Sanitária.
-
----
-
-### 📂 Conteúdo do Módulo
-
-1. **Tipos de Variáveis**: Classificação entre Qualitativas e Quantitativas (Discretas/Contínuas).
-2. **Medidas de Tendência Central**: Análise de Média, Mediana e Moda.
-    - *Insight*: Demonstração da sensibilidade da média a outliers (ex: pesos extremos de pacientes).
-3. **Medidas de Posição**:
-    - **Quartis**: Análise de tempo de espera na Classificação de Risco.
-    - **Decis**: Estratificação de risco para inspeções da Vigilância Sanitária.
-    - **Percentis**: Avaliação de performance em serviços de urgência (SAMU).
-4. **Medidas de Dispersão**:
-    - **Amplitude Total**: Estabilidade em redes de frio (geladeiras de vacinas).
-    - **Amplitude Interquartil (IQR)**: Filtro de estabilidade para identificar o "ritmo real" de processos, excluindo outliers.
+Este material contém o detalhamento dos fundamentos estatísticos aplicados a cenários reais de Enfermagem e Vigilância Sanitária, servindo como base para análise exploratória de dados (EDA) e tomada de decisão estratégica.
 
 ---
 
-### 💡 Exemplo de Destaque: Gestão de Risco Sanitário
-Utilizei a lógica de **Decis** para priorização de fiscalização. Estabelecimentos nos decis inferiores (menores notas de conformidade) são priorizados para intervenções imediatas, enquanto o 9º decil representa a elite do setor (selos de qualidade).
+### 1. Tipos de Variáveis
+
+As variáveis são classificadas conforme sua natureza e o tipo de operação matemática permitida:
+
+#### **A. Variáveis Qualitativas**
+Não possuem valor numérico calculável; os números, quando atribuídos, funcionam apenas como codificação.
+* **Exemplos:** Sexo, local de moradia, raça, grau de instrução.
+* **Aplicação:** Análise de incidência de doenças por perfil demográfico.
+
+| ID PACIENTE | SEXO |
+| :--- | :--- |
+| ABC | MASCULINO |
+| DEF | MASCULINO |
+| GHI | FEMININO |
+
+
+#### **B. Variáveis Quantitativas**
+Possuem valor numérico que permite cálculos diretos:
+* **Contínuas:** Admitem valores fracionados (`float`). Ex: Peso, temperatura, altura.
+* **Discretas:** Valores inteiros que não admitem frações (`int`). Ex: Idade em anos, número de filhos, total de consultas.
+
+> **Nota Técnica:** Ambas podem ser **categorizadas** em faixas (bins) para facilitar a criação de tabelas de frequência.
 
 ---
 
-### 🛠️ Tecnologias
-- **Python**: Para cálculos e visualização.
-- **Markdown**: Para documentação técnica.
+### 2. Medidas de Tendência Central
+
+| Medida | Definição | Aplicação na Saúde |
+| :--- | :--- | :--- |
+| **Média** | Soma dos valores dividida pelo total. | Média de temperatura corporal de um grupo de pacientes. |
+| **Mediana** | Elemento central que divide a amostra ao meio (50% acima/abaixo). | Identificação do tempo central de atendimento em pronto-socorro. |
+| **Moda** | O valor que aparece com maior frequência. | Identificar o diagnóstico mais comum em uma unidade. |
+
+#### **Demonstração da Sensibilidade da Média**
+A média é sensível a valores extremos (outliers). No exemplo abaixo, o peso de "Tim" eleva a média para 94,3kg, valor que não representa fielmente a maioria dos pacientes.
+
+| Paciente | Peso (kg) |
+| :--- | :--- |
+| Caetano | 49,5 |
+| Gil | 55,2 |
+| **Tim (Outlier)** | **188,4** |
+| Nana | 136,9 |
+| Luci | 41,5 |
+| **Média** | **94,3** |
+
 
 ---
-*Estudo desenvolvido por Barbara Sales Brasil.*
+
+### 3. Medidas de Posição (Estratificação)
+
+#### **Percentis**
+Divide a amostra em 100 partes. 
+* **Caso Real (SAMU):** Se um tempo de resposta de 10 min está no **P95**, 95% dos atendimentos são mais rápidos que este. Indica necessidade de investigar a causa raiz do atraso.
+
+#### **Quartis e Decis**
+* **Quartis:** Dividem em 4 partes (25% cada). Úteis para identificar gargalos em protocolos como o de Manchester.
+* **Decis:** Dividem em 10 partes, separando a "massa" dos extremos.
+    * **Vigilância Sanitária:** Estabelecimentos do 1º ao 3º decil (menores notas) recebem classificação "Insatisfatório" e sofrem intervenção imediata.
+
+---
+
+### 4. Medidas de Dispersão e Estabilidade
+
+#### **Amplitude Total**
+Diferença entre o máximo e o mínimo. 
+* **Exemplo:** Monitoramento de geladeira de vacinas. Uma amplitude de 15°C (ex: -2°C a 13°C) denuncia instabilidade crítica, mesmo que a média pareça normal.
+
+#### **Amplitude Interquartil (IQR)**
+Diferença entre Q3 e Q1 ($IQR = Q3 - Q1$). Atua como um **filtro de estabilidade** ao excluir outliers.
+
+| Conceito | Aplicação na Enfermagem | Utilidade em Data Science |
+| :--- | :--- | :--- |
+| **Q1 (15 min)** | 25% das medicações são rápidas. | Limite inferior da "caixa". |
+| **Q3 (35 min)** | 75% das medicações em até 35 min. | Limite superior da "caixa". |
+| **IQR (20 min)** | **Ritmo real** do setor. | Medida
