@@ -1,0 +1,33 @@
+# MBA Data Science - USP ESALQ 🚀
+## Módulo: Fundamentos de Estatística Aplicada à Saúde
+
+Este diretório documenta minha jornada no aprendizado de **Estatística Descritiva**, focando na aplicação de conceitos matemáticos para resolver problemas reais nos setores de Enfermagem e Vigilância Sanitária.
+
+---
+
+### 📂 Conteúdo do Módulo
+
+1. **Tipos de Variáveis**: Classificação entre Qualitativas e Quantitativas (Discretas/Contínuas).
+2. **Medidas de Tendência Central**: Análise de Média, Mediana e Moda.
+    - *Insight*: Demonstração da sensibilidade da média a outliers (ex: pesos extremos de pacientes).
+3. **Medidas de Posição**:
+    - **Quartis**: Análise de tempo de espera na Classificação de Risco.
+    - **Decis**: Estratificação de risco para inspeções da Vigilância Sanitária.
+    - **Percentis**: Avaliação de performance em serviços de urgência (SAMU).
+4. **Medidas de Dispersão**:
+    - **Amplitude Total**: Estabilidade em redes de frio (geladeiras de vacinas).
+    - **Amplitude Interquartil (IQR)**: Filtro de estabilidade para identificar o "ritmo real" de processos, excluindo outliers.
+
+---
+
+### 💡 Exemplo de Destaque: Gestão de Risco Sanitário
+Utilizei a lógica de **Decis** para priorização de fiscalização. Estabelecimentos nos decis inferiores (menores notas de conformidade) são priorizados para intervenções imediatas, enquanto o 9º decil representa a elite do setor (selos de qualidade).
+
+---
+
+### 🛠️ Tecnologias
+- **Python**: Para cálculos e visualização.
+- **Markdown**: Para documentação técnica.
+
+---
+*Estudo desenvolvido por Barbara Sales Brasil.*
