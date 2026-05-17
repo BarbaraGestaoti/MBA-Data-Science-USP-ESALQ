@@ -1,0 +1,51 @@
+# Estatística Descritiva Aplicada à Saúde e Enfermagem
+
+Este repositório reúne anotações teóricas e aplicações práticas de conceitos estatísticos de variabilidade, correlacionando a matemática analítica com o cotidiano da gestão hospitalar, assistência e saúde pública.
+
+---
+
+## 1. Variância (s²)
+
+A **Variância** é a média dos quadrados dos desvios de cada dado em relação à média geral. Em termos práticos, ela mede a "distância" ou o espalhamento bruto dos dados em relação ao centro (média). 
+
+Como a fórmula eleva as diferenças ao quadrado para evitar valores negativos, a unidade de medida final também fica ao quadrado (ex: °C²), o que limita sua interpretação direta no mundo real. No entanto, ela é a fundação matemática de toda a análise de variabilidade.
+
+### Exemplo Prático na Saúde:
+Em um estudo de auditoria clínica, mediu-se a temperatura corporal axilar de 5 pacientes no pós-operatório imediato:
+
+| Paciente | Temperatura Corporal (Axilar) |
+| :--- | :---: |
+| Adão | 36,5 °C |
+| Eva | 36,3 °C |
+| José | 36,6 °C |
+| Maria | 35,0 °C (Hipotermia) |
+| João | 39,5 °C (Febre Alta) |
+
+> **Análise Analítica:** Embora a média aritmética dessas temperaturas seja próxima de um estado afebril (~36,7 °C), a **variância é alta**. Uma alta variância na saúde funciona como um sinalizador de alerta (red flag). Ela aponta para a necessidade de investigar o que gerou esses extremos (intercorrências cirúrgicas, risco de infecção, perda de volume sanguíneo ou falha na regulação térmica).
+
+---
+
+## 2. Desvio Padrão (s)
+
+O **Desvio Padrão** é a raiz quadrada da variância. Ao aplicar a raiz, corrigimos a unidade de medida, fazendo com que o resultado retorne para a mesma escala original dos dados (de °C² de volta para °C). Ele indica, em média, o quanto os dados individuais se afastam para mais ou para menos em relação à média.
+
+### Exemplo Prático na Gestão de Serviços:
+Um gestor de saúde pública avaliou o tempo médio de acolhimento de demanda espontânea pela enfermagem em duas Unidades Básicas de Saúde (UBS) distintas, ambas apresentando uma **média de 15 minutos**:
+
+| Nome da UBS | População Adscrita | Tempo Médio | Desvio Padrão | Intervalo Comum de Espera |
+| :--- | :---: | :---: | :---: | :---: |
+| **UBS Bernoulli** | 9.850 usuários | 15 min | **2 min** | 13 a 17 minutos |
+| **UBS Poisson** | 32.402 usuários | 15 min | **12 min** | 3 a 27 minutos |
+
+> **Análise Analítica:** A média idêntica escondia realidades operacionais opostas. A **UBS Bernoulli** possui um serviço previsível, constante e uniforme. Já a **UBS Poisson** opera em cenário de instabilidade extrema: enquanto um usuário é acolhido em 3 minutos, outro pode aguardar 27 minutos. O desvio padrão direciona as perguntas certas para o pipeline de dados: Há sobrecarga em horários de pico na UBS Poisson? A agilidade decorre de dimensionamento incorreto de equipe? 
+
+---
+
+## 3. Erro Padrão da Média (SEM)
+
+Enquanto o desvio padrão mede a variabilidade entre os indivíduos de uma mesma amostra, o **Erro Padrão** mede o nível de incerteza da média amostral em relação à *população real total*. Ele quantifica a precisão da nossa estimativa e diminui conforme o tamanho da amostra (n) aumenta, servindo de base para o cálculo de Intervalos de Confiança.
+
+### Exemplo Prático na Vigilância Epidemiológica:
+O município fictício de *Sales Brasil* possui 1 milhão de habitantes. Diante da circulação de um novo patógeno, a equipe de Vigilância Epidemiológica precisa estimar o tempo médio de incubação do vírus. 
+
+Como é impossível testar toda a população, coleta-se uma amostra de **100 indivíduos**, encontrando uma média de 5 dias. Se o **Erro Padrão** calculado para essa amostra for pequeno, há alta segurança científica de que a média amostral reflete com precisão o comportamento real de toda a população do município.
