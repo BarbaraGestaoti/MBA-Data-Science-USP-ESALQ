@@ -1,0 +1,58 @@
+# 📊 Estatística Descritiva Aplicada à Saúde: Dispersão Relativa e Medidas de Forma
+
+Este documento apresenta um resumo técnico das métricas de **Coeficiente de Variação**, **Assimetria** e **Curtose**, conectando a teoria estatística a cenários reais da área da saúde, enfermagem e vigilância sanitária.
+
+---
+
+## 1. Coeficiente de Variação (CV): O Poder da Dispersão Relativa
+
+O **Desvio Padrão ($S$)** é uma medida absoluta. Se duas populações possuem médias muito distantes, comparar seus desvios padrões diretamente é um erro metodológico. O **Coeficiente de Variação (CV)** resolve isso ao relativizar o desvio padrão em função da média, transformando o resultado em um percentual.
+
+### 📐 Fórmula:
+$$CV = \left( \frac{S}{\bar{X}} \right) \times 100 \ (\%)$$
+
+Onde $S$ é o desvio padrão e $\bar{X}$ é a média.
+
+### 🏥 Cenário 1: Previsibilidade de Fluxo em UPAs (Comparando Mesma Unidade de Medida)
+Imagine a análise do tempo de espera de pacientes em duas unidades com fluxos de gestão diferentes:
+* **UPA A:** Média de espera ($\bar{X}$) = 20 min | Desvio Padrão ($S$) = 5 min
+* **UPA B:** Média de espera ($\bar{X}$) = 120 min | Desvio Padrão ($S$) = 15 min
+
+**Análise Estatística:**
+* $CV_A = (5 / 20) \times 100 = \mathbf{25\%}$
+* $CV_B = (15 / 120) \times 100 = \mathbf{12,5\%}$
+
+💡 **Insight de Dados:** Embora a UPA B seja mais demorada no absoluto, **seu processo é duas vezes mais estável e previsível** que o da UPA A. Na UPA B, a variação em torno da média é proporcionalmente baixa (menor volatilidade). Na UPA A, o fluxo é mais caótico.
+
+### 🏥 Cenário 2: Comparando "Bananas com Maçãs" (Unidades de Medida Diferentes)
+Como avaliar se os pacientes de uma UTI estão mais instáveis em relação ao **Peso (kg)** ou à **Frequência Cardíaca (bpm)**?
+* **Peso:** Média = 70 kg | Desvio Padrão = 14 kg  $\rightarrow CV = (14/70) \times 100 = \mathbf{20\%}$
+* **Frequência Cardíaca:** Média = 80 bpm | Desvio Padrão = 8 bpm $\rightarrow CV = (8/80) \times 100 = \mathbf{10\%}$
+
+💡 **Insight de Dados:** O grupo de pacientes apresenta maior dispersão relativa (variabilidade) no **peso** do que nos batimentos cardíacos.
+
+---
+
+## 2. Assimetria (Skewness): O Comportamento das Caudas
+
+A assimetria indica para qual lado a maior concentração dos dados está deslocada em relação ao centro da distribuição. O **Coeficiente de Assimetria de Fisher ($g_1$)** quantifica essa direção.
+
+### 📈 Classificação e Aplicação na Saúde:
+
+
+| Métrica | Tipo de Curva | Relação das Medidas | 🏥 Exemplo Prático na Saúde |
+| :--- | :--- | :--- | :--- |
+| **$g_1 = 0$** | **Simétrica** | $\text{Média} = \text{Mediana} = \text{Moda}$ | **Batimentos Cardíacos em Repouso:** Em uma população saudável, os dados se distribuem perfeitamente ao redor do centro físico. |
+| **$g_1 > 0$** | **Assimétrica Positiva** (À Direita) | $\text{Média} > \text{Mediana} > \text{Moda}$ | **Tempo de Internação por Dengue:** A maioria recebe alta rápido (pico à esquerda), mas poucos casos graves ficam semanas internados, puxando a cauda e a Média para a direita. |
+| **$g_1 < 0$** | **Assimétrica Negativa** (À Esquerda) | $\text{Média} < \text{Mediana} < \text{Moda}$ | **Idade de Óbito por Doenças Crônicas:** A grande maioria dos óbitos ocorre em idades avançadas (pico à direita). Casos raros de mortes prematuras criam uma cauda longa à esquerda. |
+
+---
+
+## 3. Curtose (Kurtosis): O Achatamento e a Concentração
+
+A curtose mede o grau de achatamento ou alongamento da curva de distribuição em comparação com a curva normal padrão (distribuição teórica de referência). O coeficiente de Fisher é representado por $g_2$.
+
+* **Mesocúrtica ($g_2 = 0$):** Distribuição ideal normal.
+* **Leptocúrtica ($g_2 > 0$):** Curva pontiaguda com alta concentração central. Os dados variam muito pouco, mas quando variam, apresentam valores extremos (caudas pesadas).
+* **Platicúrtica ($g_2 < 0$):** Curva achatada e espalhada. Indica alta variabilidade generalizada.
+
