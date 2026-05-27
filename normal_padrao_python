@@ -1,0 +1,24 @@
+import scipy.stats as stats
+
+# Parâmetros históricos do ativo financeiro (Validados no Jupyter)
+media_mensal = 3.8
+desvio_padrao = 1.2
+
+# a) Maior que 4% (1 - CDF)
+prob_a = 1 - stats.norm.cdf(4.0, loc=media_mensal, scale=desvio_padrao)
+
+# b) Menor que 3% (CDF Direta)
+prob_b = stats.norm.cdf(3.0, loc=media_mensal, scale=desvio_padrao)
+
+# c) Retorno Negativo (Menor que 0% -> CDF Direta)
+prob_c = stats.norm.cdf(0.0, loc=media_mensal, scale=desvio_padrao)
+
+# d) Intervalo entre 1% e 5% (CDF_superior - CDF_inferior)
+prob_d = stats.norm.cdf(5.0, loc=media_mensal, scale=desvio_padrao) - stats.norm.cdf(1.0, loc=media_mensal, scale=desvio_padrao)
+
+# Exibição dos resultados formatados
+print("📊 RESULTADOS DA ANÁLISE DE RISCO DA AÇÃO:")
+print(f"a) Probabilidade de retorno maior que 4%: {prob_a * 100:.2f}%")
+print(f"b) Probabilidade de retorno menor que 3%: {prob_b * 100:.2f}%")
+print(f"c) Probabilidade de retorno ser negativo (< 0%): {prob_c * 100:.2f}%")
+print(f"d) Probabilidade de retorno entre 1% e 5%: {prob_d * 100:.2f}%")
