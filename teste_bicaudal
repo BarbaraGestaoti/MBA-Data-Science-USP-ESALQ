@@ -1,0 +1,30 @@
+# Análise de Permanência de Cateter Venoso Periférico (CVP) 📊🩺
+
+Este projeto simula uma análise de dados hospitalares utilizando **Python**, **SQL (SQLite)** e **Pandas** para avaliar o impacto de um novo modelo de cateter no tempo seguro de permanência do acesso (protocolo de 96 horas).
+
+## 🚀 Objetivo do Estudo
+Avaliar se o tempo médio de permanência do novo cateter é estatisticamente diferente do modelo padrão atual através de um **Teste Estatístico Bilateral (Bicaudal)**.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+* **Python** (Lógica de análise e teste de hipótese)
+* **SQLite** (Criação e persistência do banco de dados fictício)
+* **Pandas** (Manipulação e agregação dos dados)
+* **SciPy (stats)** (Aplicação do Teste t de Student)
+
+---
+
+## 📈 Conclusão Analítica & Tomada de Decisão
+Após rodar o teste de hipótese bicaudal ($alternative='two-sided'$), os dados apresentaram um **empate técnico** (sem diferença estatisticamente significativa no tempo de permanência).
+
+Em cenários de equivalência clínica na métrica principal, a tomada de decisão da gestão em saúde é direcionada para uma análise multivariada:
+1. **Experiência do Paciente:** Avaliação de scores de dor e conforto à punção.
+2. **Usabilidade pela Enfermagem:** Taxa de sucesso na primeira tentativa e facilidade no manuseio dos dispositivos de segurança (NR-32).
+3. **Custo-Efetividade:** Análise do custo unitário do novo modelo frente à sustentabilidade financeira institucional.
+
+---
+
+## 💻 Como Rodar o Projeto
+1. Clone o repositório.
+2. Execute o script principal em Python para criar o banco local `estudo_cateter.db` e rodar a análise estatística.
