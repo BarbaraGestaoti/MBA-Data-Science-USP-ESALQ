@@ -1,6 +1,12 @@
-# MBA em Data Science - USP ESALQ 🚀
+✅ analise-dados-saude-publica
 
-Este repositório foi criado para documentar minha jornada acadêmica e técnica durante o MBA em Data Science na USP ESALQ. Aqui, compartilho exercícios, projetos práticos e notas de estudo sobre as tecnologias e metodologias abordadas no curso.
+Estrutura:
+
+🎯 Problema
+📊 Dados utilizados
+🔧 Ferramentas
+📈 Insights
+
 
 ## 🎯 Objetivo
 O foco principal é aplicar conceitos teóricos em problemas reais, construindo um portfólio sólido que demonstre minhas competências em análise de dados, estatística, programação e machine learning.
