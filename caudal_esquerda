@@ -1,0 +1,37 @@
+## 📊 Metodologia Estatística e Código Python
+
+Para responder à pergunta com o devido rigor analítico, foi aplicado um **Teste t de Student para uma amostra (Caudal à Esquerda / Left-Tailed Test)** utilizando o seguinte script em Python:
+
+```python
+import pandas as pd
+import scipy.stats as stats
+
+# 1. Banco de dados estruturado (Tempos de resposta em segundos)
+dados_reais = {
+    'id_disparo': range(1, 36),
+    'tempo_resposta_seg': [
+        40, 42, 38, 45, 39, 41, 43, 37, 40, 44,
+        36, 39, 42, 41, 40, 38, 43, 45, 39, 35,
+        41, 40, 38, 42, 37, 40, 39, 41, 44, 38,
+        40, 42, 39, 41, 36
+    ]
+}
+
+# Transformando o dicionário em um DataFrame do Pandas
+df_uti = pd.DataFrame(dados_reais)
+
+# 2. Definindo os parâmetros do teste
+media_historica = 45
+alpha = 0.05
+
+# 3. Executando o Teste t de uma amostra (Caudal à esquerda)
+stat_t, p_valor = stats.ttest_1samp(df_uti['tempo_resposta_seg'], popmean=media_historica, alternative='less')
+
+# 4. Exibindo os resultados analíticos no console
+print("--- RESULTADO DE ESTUDO DE CASO (DADOS TEMPO) ---")
+print(f"Total de alarmes analisados: {len(df_uti)} disparos")
+print(f"Média de tempo da amostra atual: {df_uti['tempo_resposta_seg'].mean():.2f} segundos")
+print(f"Desvio Padrão da amostra: {df_uti['tempo_resposta_seg'].std():.2f} segundos")
+print(f"Estatística t: {stat_t:.4f}")
+print(f"p-valor: {p_valor}")
+print('-' * 50)
