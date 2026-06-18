@@ -57,3 +57,11 @@ print(f'Desvio Padrão da amostra: {df_ps["tempo_atendimento_min"].std():.2f} mi
 print(f'Estatística t: {stat_t:.4f}')
 print(f'p-valor: {p_valor}')
 print('-' * 52)
+
+--- RESULTADO DO ESTUDO DE CASO (CAUDA À DIREITA) ---
+Total de atendimentos analisados: 30 pacientes
+Média de tempo atual: 17.13 minutos
+Desvio Padrão da amostra: 1.83 minutos
+Estatística t: 6.3804
+p-valor: 2.764516315222213e-07
+----------------------------------------------------
