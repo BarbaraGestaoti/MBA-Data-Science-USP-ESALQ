@@ -1,0 +1,44 @@
+import numpy as np
+import pandas as pd
+import scipy.stats as stats
+
+# 1. Parâmetros do cenário
+media_historica = 18  # mu_0
+alfa = 0.01          # 1% de significância
+
+# Em um cenário real com a sua planilha suporte, você faria:
+# df = pd.read_excel('sua_planilha.xlsx', sheet_name='Teste t médias')
+# dados = df['tempo_processamento'].to_numpy()
+
+# Simulando os dados do exemplo com média 16.808 e desvio 2.733 (n=25)
+np.random.seed(42)
+dados = np.random.normal(loc=16.808, scale=2.733, size=25)
+
+# 2. Executando o Teste t para uma amostra (One-sample t-test)
+# O parâmetro alternative='less' indica que nossa hipótese alternativa busca uma REDUÇÃO (< 18)
+estatistica_t, p_valor = stats.ttest_1samp(dados, popmean=media_historica, alternative='less')
+
+print(f"Média Calculada da Amostra: {dados.mean():.3f} minutos")
+print(f"Desvio Padrão da Amostra (S): {dados.std(ddof=1):.3f} minutos")
+print(f"Estatística T: {estatistica_t:.4f}")
+print(f"p-valor: {p_valor:.4f}")
+
+print("\n--- DECISÃO ANALÍTICA ---")
+if p_valor < alfa:
+    print("👉 Resultado Significativo! Rejeitamos H0. O novo fluxo reduziu o tempo de liberação.")
+else:
+    print("👉 Não há evidências estatísticas suficientes a 1% de significância. Mantemos H0.")
+    print("O Point of Care ainda não apresentou um impacto estatisticamente seguro.")
+
+O Peso da Balança Operacional na Saúde
+
+Substituir um laboratório central por um equipamento Point of Care (PoC) no Pronto-Socorro traz custos invisíveis e riscos que muitas vezes a diretoria financeira não enxerga:
+
+Logística de Treinamento Permanente: O turnover (rotatividade) da equipe de enfermagem em Prontos-Socorros costuma ser alto. Treinar e garantir que toda a equipe técnica execute o teste na beira do leito de forma padronizada, sem erros de pré-analítico ou contaminação, exige uma energia de educação continuada gigantesca.
+
+O Paradoxo da Dupla Checagem (Confirmação): Como a Troponina é um marcador crítico de tempo-dependência e define conduta imediata (cateterismo, trombólise, etc.), protocolos institucionais rígidos e auditorias de qualidade costumam exigir que amostras com resultados limítrofes no PoC sejam reenviadas para o laboratório central para confirmação por quimioluminescência. Ou seja, você gasta duas vezes (o kit rápido e a estrutura oficial).
+
+Volume Circulante: Equipamentos de Point of Care exigem calibrações constantes e os reagentes têm data de validade estrita. Se o PS não tiver uma densidade populacional de pacientes infartados que justifique o giro rápido desse estoque, o custo por exame disparará devido a perdas por vencimento.
+
+
+
