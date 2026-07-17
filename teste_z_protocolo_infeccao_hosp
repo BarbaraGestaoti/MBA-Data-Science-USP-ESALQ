@@ -1,0 +1,73 @@
+# 🏥 Auditoria Estatística de Processos: Impacto de Protocolos Clínicos no Consumo de Antimicrobianos
+
+Este projeto apresenta a aplicação prática do **Teste Z para médias de uma amostra** no contexto de Gestão da Qualidade, Vigilância e Farmácia Clínica em uma Unidade de Terapia Intensiva (UTI). 
+
+O objetivo é avaliar se a implementação de um novo protocolo de prevenção de infecções gerou um impacto estatisticamente significativo no consumo diário de um antimicrobiano de alto custo, servindo como um **sinal indireto** de adesão da equipe assistencial e aumento da vigilância diagnóstica.
+
+---
+
+## 📌 Contexto de Negócio & Saúde
+Em auditoria de processos hospitalares, oscilações diárias em indicadores são comuns. O desafio da enfermeira da qualidade é determinar quando o aumento de consumo de um insumo representa um desvio/gasto descontrolado ou, pelo contrário, reflete uma **alta adesão a uma nova diretriz terapêutica** (como o início precoce de terapia empírica em protocolos de sepse).
+
+### Definição das Hipóteses
+*   **Hipótese Nula ($H_0$):** $\mu = 50$ ampolas/dia. O novo protocolo não alterou o padrão de consumo. O comportamento atual está dentro da variabilidade histórica normal do serviço.
+*   **Hipótese Alternativa ($H_1$):** $\mu > 50$ ampolas/dia. O consumo médio aumentou de forma significativa, indicando mudança de comportamento da equipe pós-treinamento.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+*   **Python 3.x**
+*   **Pandas & NumPy** (Manipulação de dados e simulação da amostra)
+*   **SciPy** (Cálculo estatístico do Teste Z e p-valor)
+*   **Matplotlib & Seaborn** (Visualização de dados e plotagem da distribuição)
+
+---
+
+## 💻 Implementação no Google Colab / Python
+
+Abaixo está o script estruturado para execução da análise automatizada:
+
+```python
+import numpy as np
+import pandas as pd
+import scipy.stats as stats
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 1. Configuração dos Parâmetros Históricos (Baseline da UTI)
+media_historica = 50       # mu_0 (média histórica de ampolas/dia)
+desvio_padrao_pop = 8      # sigma (desvio padrão populacional conhecido)
+
+# 2. Simulação dos Dados Atuais (Amostra de 30 dias pós-protocolo)
+np.random.seed(42)  
+dados_pos_protocolo = np.random.normal(loc=54.5, scale=7, size=30).round(0)
+df_consumo = pd.DataFrame({'Consumo_Diario': dados_pos_protocolo})
+
+n = len(df_consumo)
+media_amostra = df_consumo['Consumo_Diario'].mean()
+
+# 3. Execução do Teste Z (Unilateral à Direita)
+erro_padrao = desvio_padrao_pop / np.sqrt(n)
+valor_z = (media_amostra - media_historica) / erro_padrao
+p_valor = 1 - stats.norm.cdf(valor_z)
+
+print(f"Tamanho da Amostra (n): {n} dias")
+print(f"Média da Amostra: {media_amostra:.2f} ampolas/dia")
+print(f"Estatística Z: {valor_z:.4f}")
+print(f"p-valor: {p_valor:.4f}")
+
+print("\n--- CONCLUSÃO DA GESTÃO DA QUALIDADE ---")
+if p_valor < 0.05:
+    print("👉 Resultado Estatisticamente Significativo! Rejeitamos H0.")
+    print("O aumento do consumo não foi por acaso. Há forte sinal indireto de adesão ao protocolo.")
+else:
+    print("👉 Sem significância estatística. Mantemos H0.")
+    print("A oscilação está dentro do ruído histórico esperado para o serviço.")
+
+Estatística Z calculada: 2.1681
+p-valor: 0.0151
+
+--- CONCLUSÃO GESTORA ---
+Resultado Estatisticamente Significativo! Rejeitamos a hipótese nula (H0).
+O consumo de antimicrobianos AUMENTOU de forma significativa pós-protocolo.
+Isso indica um sinal indireto de mudança de comportamento da equipe (adesão/vigilância).
